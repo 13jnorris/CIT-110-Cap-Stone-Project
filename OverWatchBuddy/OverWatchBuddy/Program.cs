@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace OverWatchBuddy
 {
@@ -22,7 +23,6 @@ namespace OverWatchBuddy
             Hero userHero = null;
             Hero enemyHero = null;
             string menuChoice;
-            List<Hero> team;
             bool runApp = true;
 
             while (runApp)
@@ -32,10 +32,8 @@ namespace OverWatchBuddy
                 // get user choice
                 Console.WriteLine("A) Choose your Hero");
                 Console.WriteLine("B) Hero Information");
-                Console.WriteLine("C) Team Selection Screen");
-                Console.WriteLine("D) Team Information Screen");
-                Console.WriteLine("E) Enemy Hero");
-                Console.WriteLine("F) Enemy Team Information");
+                Console.WriteLine("C) Enemy Hero");
+                Console.WriteLine("D) Enemy Hero Information");
                 Console.WriteLine("Q) Quit");
                 menuChoice = Console.ReadLine().ToUpper();
 
@@ -56,23 +54,17 @@ namespace OverWatchBuddy
                         HeroInfoScreen(userHero);
                         break;
                     case "C":
-                        team = TeamSelectScreen(heros);
-                        break;
-                    case "D":
-                        //TeamInformationScreen(team);
-                        break;
-                    case "E":
                         HeroName enemyHeroName;
                         enemyHeroName = EnemyHeroSelectScreen();
                         foreach (Hero hero in heros)
                         {
                             if (hero.Name == enemyHeroName)
                             {
-                                enemyHeroName = hero;
+                                enemyHero = hero;
                             }
                         }
                         break;
-                    case "F":
+                    case "D":
                         EnemyHeroInfoScreen(enemyHero);
                         break;
                     case "Q":
@@ -84,6 +76,7 @@ namespace OverWatchBuddy
                 }
             }
         }
+
 
         static Hero EnemyHeroInfoScreen(Hero enemyHero)
         {
@@ -106,12 +99,24 @@ namespace OverWatchBuddy
         static HeroName EnemyHeroSelectScreen()
         {
             HeroName enemyHero;
+            string[] HeroList;
             string userResponse;
             bool validResponse = false;
+            DisplayHeader("\tHero Selection Screen");
+            string dataPath = @"Heroes\HeroList.txt";
 
-            do
+            HeroList = File.ReadAllLines(dataPath);
+            foreach (string line in HeroList)
             {
-                DisplayHeader("\tHero Selection Screen");
+                Console.WriteLine(line);
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+                do
+            {
+
                 Console.WriteLine("Please select hero:");
                 userResponse = Console.ReadLine().ToUpper();
 
@@ -127,6 +132,7 @@ namespace OverWatchBuddy
 
             } while (!validResponse);
 
+            Console.WriteLine();
             Console.WriteLine($"You chose {enemyHero}.");
 
             DisplayContinuePrompt();
@@ -146,6 +152,7 @@ namespace OverWatchBuddy
             ana.Counter.Add(HeroName.DOOMFIST);
             ana.Counter.Add(HeroName.WINSTON);
             heros.Add(ana);
+            
 
             Hero tracer = new Hero();
             tracer.Name = HeroName.TRACER;
@@ -404,13 +411,26 @@ namespace OverWatchBuddy
 
         static HeroName HeroSelectScreen()
         {
+            
+            
             HeroName userHero;
             string userResponse;
+            string[] HeroList;
             bool validResponse = false;
+            string dataPath = @"Heroes\HeroList.txt";
 
+            DisplayHeader("\tHero Selection Screen");
+
+            HeroList = File.ReadAllLines(dataPath);
+            foreach (string line in HeroList)
+            {
+                Console.WriteLine(line);
+            }
+            Console.WriteLine();
             do
             {
-                DisplayHeader("\tHero Selection Screen");
+
+                
                 Console.WriteLine("Please select hero:");
                 userResponse = Console.ReadLine().ToUpper();
 
@@ -425,45 +445,13 @@ namespace OverWatchBuddy
                 }
 
             } while (!validResponse);
-
+            Console.WriteLine();
             Console.WriteLine($"You chose {userHero}.");
 
             DisplayContinuePrompt();
 
             return userHero;
         }
-
-        private static List<Hero> TeamSelectScreen(List<Hero> heros)
-        {
-            DisplayHeader("Team Selection Screen");
-            HeroName teamMember;
-            
-            List<Hero> team = new List<Hero>();
-            int numberOfHeroes = 6;
-            string userResponse;
-            HeroName[] teamMembers = new HeroName[numberOfHeroes];
-           
-        
-
-            for (int i = 0; i < numberOfHeroes; i++)
-            {
-                Console.WriteLine("Please choose a hero that is on your team:");
-                userResponse = Console.ReadLine().ToUpper();
-                Enum.TryParse(userResponse, out teamMember);
-                teamMembers[i] = teamMember;
-                //team.AddRange(teamMembers);
-            }
-
-            for (int i = 0; i < teamMembers.Length; i++)
-            {
-                Console.WriteLine($"{teamMembers[i]}");
-
-            }
-
-            DisplayContinuePrompt();
-            return team;
-        }
-
         static void TitleScreen()
         {
             Console.WriteLine("\t OVERWATCH BUDDY");

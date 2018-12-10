@@ -19,3 +19,10 @@ E:\OverWatchBuddy\OverWatchBuddy\obj\Debug\OverWatchBuddy.csprojAssemblyReferenc
 E:\OverWatchBuddy\OverWatchBuddy\obj\Debug\OverWatchBuddy.csproj.CoreCompileInputs.cache
 E:\OverWatchBuddy\OverWatchBuddy\obj\Debug\OverWatchBuddy.exe
 E:\OverWatchBuddy\OverWatchBuddy\obj\Debug\OverWatchBuddy.pdb
+C:\Users\13jno\Desktop\githib\OverWatchBuddy\OverWatchBuddy\obj\Debug\OverWatchBuddy.csprojAssemblyReference.cache
+C:\Users\13jno\Desktop\githib\OverWatchBuddy\OverWatchBuddy\obj\Debug\OverWatchBuddy.csproj.CoreCompileInputs.cache
+C:\Users\13jno\Desktop\githib\OverWatchBuddy\OverWatchBuddy\obj\Debug\OverWatchBuddy.exe
+C:\Users\13jno\Desktop\githib\OverWatchBuddy\OverWatchBuddy\obj\Debug\OverWatchBuddy.pdb
+C:\Users\13jno\Desktop\githib\OverWatchBuddy\OverWatchBuddy\bin\Debug\OverWatchBuddy.exe.config
+C:\Users\13jno\Desktop\githib\OverWatchBuddy\OverWatchBuddy\bin\Debug\OverWatchBuddy.exe
+C:\Users\13jno\Desktop\githib\OverWatchBuddy\OverWatchBuddy\bin\Debug\OverWatchBuddy.pdb

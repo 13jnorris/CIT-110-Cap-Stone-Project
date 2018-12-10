@@ -54,6 +54,7 @@ namespace OverWatchBuddy
         private roleName _role;
         private List<HeroName> _counter;
         private string _description;
+        private List<HeroName> _team;
 
         public HeroName Name
         {
@@ -84,6 +85,7 @@ namespace OverWatchBuddy
         {
             _counter = new List<HeroName>();
         }
+
 
       
     } 
